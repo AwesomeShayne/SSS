@@ -23,6 +23,12 @@ namespace SSS
         public MainWindow()
         {
             InitializeComponent();
+            MainContentControl.Content = new LaunchScreen(this);
+        }
+
+        public void SetContent(UserControl _Content)
+        {
+            MainContentControl.Content = _Content;
         }
     }
 }
