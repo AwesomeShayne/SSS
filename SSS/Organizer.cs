@@ -10,8 +10,20 @@ using SOSQL;
 
 namespace SSS
 {
-    class Organizer
+    public class Organizer
     {
-        private Container 
+        private Container ShippingContainer;
+        private List<MedicalDevice> Devices;
+        private List<Supply> Supplies;
+
+        public Organizer(Container _ShippingContainers, List<MedicalDevice> _Devices, List<Supply> _Supplies)
+        {
+            ShippingContainer = _ShippingContainers;
+            Devices = _Devices;
+            Supplies = _Supplies;
+            DetermineTotalVolume();
+        }
+
+        
     }
 }
