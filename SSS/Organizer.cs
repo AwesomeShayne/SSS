@@ -66,9 +66,9 @@ namespace SSS
             
         }
 
-        private Container PackStep(Container _ThisContainer, List<MedicalDevice> _Devices, List<Container>
-            _InternalContainers, List<Supply> _Supplies, out Container _NextStepContainer,out List<MedicalDevice> 
-            _OutDevices, out List<Container> _OutInternalContainers, out List<Supply> _OutSupplies)
+        private void PackStep(Container _ThisContainer, List<MedicalDevice> _Devices, List<Container>
+            _InternalContainers, List<Supply> _Supplies)//, out Container _NextStepContainer,out List<MedicalDevice> 
+            //_OutDevices, out List<Container> _OutInternalContainers, out List<Supply> _OutSupplies)
         {
             List<float> _Volumes = new List<float>();
             _Volumes.Add(_InternalContainers[0].ExternalVolume);
@@ -76,7 +76,7 @@ namespace SSS
             _Volumes.Add(_Supplies[0].Box.ExternalVolume);
             if (Steps.Count() == 0)
             {
-                if (_Volumes[0] > _Volumes[1] && _Volumes[0] > _Volumes[2] && _ThisContainer.CanStackZ() > _InternalContainers[0].Weight)
+                if (_Volumes[0] > _Volumes[1] && _Volumes[0] > _Volumes[2] )//&& _ThisContainer.CanStackZ() > _InternalContainers[0].Weight)
                 {
                     Steps.Add(""); // TODO: Determine the add message, this also ties in with return value
                     Pack(InternalContainers[0], Devices, Supplies);
@@ -84,7 +84,7 @@ namespace SSS
                 }
                 else if (_Volumes[1] > _Volumes[2] && _Volumes[1] > _Volumes[0])
                 {
-                    Devices[0].DetermineBestShippingPosition();
+                    //Devices[0].DetermineBestShippingPosition();
                     Steps.Add("");
                     _Devices.RemoveAt(0);
                 }
