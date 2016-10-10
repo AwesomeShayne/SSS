@@ -21,16 +21,34 @@ namespace SSS
     public partial class LaunchScreen : UserControl
     {
         private MainWindow Parent;
+        private int RowCount = 0;
+        private List<ItemRow> Items;
         public LaunchScreen(MainWindow _Parent)
         {
             InitializeComponent();
             Parent = _Parent;
-            SwitchContentButton.Click += SwitchContentButton_Click;
+            ItemRows.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            var _ItemRow = new ItemRow(this);
+            Grid.SetRow(_ItemRow, RowCount);
+            Grid.SetColumnSpan(_ItemRow, 5);
+            ItemRows.Children.Add(_ItemRow);
+            ContinueButton.Click += ContinueButton_Click;
+            
         }
 
-        private void SwitchContentButton_Click(object sender, RoutedEventArgs e)
+        private void ContinueButton_Click(object sender, RoutedEventArgs e)
         {
-            Parent.SetContent(new Visualizer());
+            Parent.SetContent(new Visualizer(Parent, this));
+        }
+
+        internal void NewRow()
+        {
+            RowCount++;
+            ItemRows.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            var _ItemRow = new ItemRow(this);
+            Grid.SetRow(_ItemRow, RowCount);
+            Grid.SetColumnSpan(_ItemRow, 5);
+            ItemRows.Children.Add(_ItemRow);
         }
     }
 }

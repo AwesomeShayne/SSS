@@ -20,9 +20,19 @@ namespace SSS
     /// </summary>
     public partial class Visualizer : UserControl
     {
-        public Visualizer()
+        private LaunchScreen PreviousScreen;
+        private MainWindow Parent;
+        public Visualizer(MainWindow _Parent, LaunchScreen _PreviousScreen)
         {
             InitializeComponent();
+            Parent = _Parent;
+            PreviousScreen = _PreviousScreen;
+            BackButton.Click += BackButton_Click;
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Parent.SetContent(PreviousScreen);
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="SSS.ItemRow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SSS"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ComboBox Name="CategoryComboBox"
+                  Grid.Column="0"/>
+        <ComboBox Name="SubCategoryComboBox"
+                  Grid.Column="1"/>
+        <ComboBox Name="ItemCombobox"
+                  Grid.Column="2"/>
+        <TextBox Name="QuantityTextBox"
+                 Grid.Column="3"/>
+        <Button Name="UpdateButton"
+                Grid.Column="4"
+                Content="Update"/>
+    </Grid>
+</UserControl>
